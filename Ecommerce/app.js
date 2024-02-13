@@ -11,6 +11,10 @@ app.get("/", async (req, res) => {
     try {
         const data = fs.readFileSync(path.join(__dirname, './src/data/products.json'), 'utf-8');
         const products = JSON.parse(data);
+        if (!req.query.hasOwnProperty('category')) {
+            res.json(products);
+            return;
+        }
         switch (req.query.category.toLowerCase()) {
             case 'food':
                 res.json(products.filter((product) => product.category === "food"));

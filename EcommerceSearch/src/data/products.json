@@ -1,0 +1,52 @@
+[
+    {
+      "title": "Product 1",
+      "category": "food",
+      "price": 10.99
+    },
+    {
+      "title": "Product 2",
+      "category": "others",
+      "price": 25.99
+    },
+    {
+      "title": "Product 3",
+      "category": "food",
+      "price": 5.99
+    },
+    {
+      "title": "Product 4",
+      "category": "others",
+      "price": 30.99
+    },
+    {
+      "title": "Product 5",
+      "category": "food",
+      "price": 8.99
+    },
+    {
+      "title": "Product 6",
+      "category": "others",
+      "price": 45.99
+    },
+    {
+      "title": "Product 7",
+      "category": "food",
+      "price": 12.99
+    },
+    {
+      "title": "Product 8",
+      "category": "others",
+      "price": 15.99
+    },
+    {
+      "title": "Product 9",
+      "category": "food",
+      "price": 18.99
+    },
+    {
+      "title": "Product 10",
+      "category": "others",
+      "price": 20.99
+    }
+  ]

@@ -1,7 +1,7 @@
 {
   "name": "lab_04",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is a simple commerce application that allows you to retrieve product details as a JSON response.",
   "main": "app.js",
   "type": "module",
   "scripts": {
