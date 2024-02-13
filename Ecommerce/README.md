@@ -10,28 +10,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 To run this project, you need to have Node.js and npm installed on your machine. You can download Node.js from the [official website](https://nodejs.org/en/download/).
 
-### Installing
-
-1. Clone the project to your local machine:
-    ```bash
-    git clone https://github.com/yourusername/ecommerce.git
-    ```
-
-2. Navigate to the project directory:
-    ```bash
-    cd ecommerce
-    ```
-
-3. Install the dependencies:
-    ```bash
-    npm install
-    ```
-
-4. Start the server:
-    ```bash
-    npm start
-    ```
-
 ## API Endpoints
 
 ### Get Products
