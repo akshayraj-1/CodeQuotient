@@ -17,14 +17,14 @@ To run this project, you need to have Node.js and npm installed on your machine.
 - **Endpoint:** `/`
 - **Method:** GET
 - **Description:** Retrieves a list of products as a JSON response.
-- **Example:** `http://localhost:3000/`
+- **Example:** `http://localhost:3001/`
 
 ### Get Category Filtered Products
 
 - **Endpoint:** `/?category={yourcategory}`
 - **Method:** GET
 - **Description:** Retrieves a list of products filtered by category as a JSON response.
-- **Example:** `http://localhost:3000/?category=electronics`
+- **Example:** `http://localhost:3001/?category=electronics`
 
 ## Product Data
 
