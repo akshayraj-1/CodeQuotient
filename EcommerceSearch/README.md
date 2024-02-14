@@ -1,4 +1,4 @@
-# Ecommerce
+# Ecommerce Search
 
 This project is a simple commerce application that allows you to retrieve product details as a JSON response.
 
