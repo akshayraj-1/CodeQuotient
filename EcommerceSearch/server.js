@@ -44,7 +44,6 @@ const server = http.createServer(async (req, res) => {
 
 
 const filterProducts = async (query) => {
-    console.log(query);
     const products = fs.readFileSync(path.join(__dirname, './src/data/products.json'));
     const productsData = JSON.parse(products);
     let filtered = productsData.filter((product) => product.category == (query.category ? query.category : product.category) && product.price >= parseInt(query.price ? query.price : 0));
