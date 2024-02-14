@@ -3,8 +3,8 @@
 This project is a simple commerce application that allows you to retrieve product details as a JSON response.
 
 ## Made Using
+- HTML, CSS, JS
 - Node JS
-- Express JS
 
 ## API Endpoints
 
@@ -13,14 +13,21 @@ This project is a simple commerce application that allows you to retrieve produc
 - **Endpoint:** `/`
 - **Method:** GET
 - **Description:** Retrieves a list of products as a JSON response.
-- **Example:** `http://localhost:3001/`
+- **Example:** `http://localhost:3000/products`
 
 #### Get Category Filtered Products:
 
-- **Endpoint:** `/?category={yourcategory}`
+- **Endpoint:** `/products?category={yourcategory}`
 - **Method:** GET
 - **Description:** Retrieves a list of products filtered by category as a JSON response.
-- **Example:** `http://localhost:3001/?category=electronics`
+- **Example:** `http://localhost:3000/products?category=electronics`
+
+#### Get Category & Price Filtered Products:
+
+- **Endpoint:** `/filterproducts?category={yourcategory}&price={yourprice}`
+- **Method:** GET
+- **Description:** Retrieves a list of products filtered by category and price (>= given price) as a JSON response.
+- **Example:** `http://localhost:3000/filterproducts?category=electronics&price=200`
 
 ## Product Data
 
