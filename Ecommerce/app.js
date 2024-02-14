@@ -12,7 +12,7 @@ app.get("/", async (req, res) => {
         const data = fs.readFileSync(path.join(__dirname, './src/data/products.json'), 'utf-8');
         const products = JSON.parse(data);
         if (!req.query.hasOwnProperty('category')) {
-            res.json(products);
+            res.status(200).send('<h3 style="font-family: sans-serif;">Usage:<br>/?category=food</h3>');
             return;
         }
         switch (req.query.category.toLowerCase()) {
@@ -20,14 +20,14 @@ app.get("/", async (req, res) => {
                 res.json(products.filter((product) => product.category === "food"));
                 break;
             case 'others':
-                res.json(products.filter((product) => product.category === "others"));
+                res.status(200).json(products.filter((product) => product.category === "others"));
                 break;
             default:
-                res.json(products);
+                res.status(200).json(products);
         }
 
     } catch (error) {
-        res.send(error).status(500);
+        res.status(500).send(error);
     }
 })
 
