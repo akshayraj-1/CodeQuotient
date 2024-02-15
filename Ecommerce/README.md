@@ -2,10 +2,6 @@
 
 This project is a simple commerce application that allows you to retrieve product details as a JSON response.
 
-## Made Using
-- Node JS
-- Express JS
-
 ## API Endpoints
 
 #### Get Products:
