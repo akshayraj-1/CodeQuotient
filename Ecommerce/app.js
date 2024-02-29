@@ -10,10 +10,9 @@ const port = 3001;
 app.get("/", async (req, res) => {
     try {
         const data = fs.readFileSync(path.join(__dirname, './src/data/products.json'), 'utf-8');
-        const products = JSON.parse(data);
+        const products = await JSON.parse(data);
         if (!req.query.hasOwnProperty('category')) {
-            res.status(200).send('<h3 style="font-family: sans-serif;">Usage:<br>/?category=food</h3>');
-            return;
+            return res.status(200).send('<h3 style="font-family: sans-serif;">Usage:<br>/?category=food</h3>');
         }
         switch (req.query.category.toLowerCase()) {
             case 'food':
