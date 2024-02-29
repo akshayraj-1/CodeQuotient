@@ -2,22 +2,28 @@
 
 This project is a simple commerce application that allows you to retrieve product details as a JSON response.
 
+### Preview : https://akshay-cq-ecommerce.glitch.me/
+
 ## API Endpoints
 
-#### Get Products:
+#### Get Products: [Try it here ↗️](https://akshay-cq-ecommerce.glitch.me/)
 
 - **Endpoint:** `/`
 - **Method:** GET
 - **Description:** Retrieves a list of products as a JSON response.
 - **Example:** `http://localhost:3001/`
 
-#### Get Category Filtered Products:
+#### Get Category Filtered Products: [Try it here ↗️](https://akshay-cq-ecommerce.glitch.me/?category=food)
 
 - **Endpoint:** `/?category={yourcategory}`
 - **Method:** GET
 - **Description:** Retrieves a list of products filtered by category as a JSON response.
-- **Example:** `http://localhost:3001/?category=electronics`
+- **Example:** `http://localhost:3001/?category=food`
+- **Test** https://akshay-cq-ecommerce.glitch.me/?category=food
 
 ## Product Data
 
 The product details are located in the `src/data` directory. Each file contains an array of product objects.
+Available Categories:
+- food
+- others

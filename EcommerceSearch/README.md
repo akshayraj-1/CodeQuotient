@@ -2,6 +2,8 @@
 
 This project is a simple commerce application that allows you to retrieve product details as a JSON response.
 
+### Preview: https://akshay-cq-ecommerce-search.glitch.me/
+
 ## API Endpoints
 
 #### Get Products:
@@ -28,3 +30,14 @@ This project is a simple commerce application that allows you to retrieve produc
 ## Product Data
 
 The product details are located in the `src/data` directory. Each file contains an array of product objects.
+Available Categories:
+- food
+- clothes
+- electronics
+- accessories
+- shoes
+- apparel
+- eyewear
+- snacks
+- outwear
+- footwear
