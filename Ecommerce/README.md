@@ -19,7 +19,6 @@ This project is a simple commerce application that allows you to retrieve produc
 - **Method:** GET
 - **Description:** Retrieves a list of products filtered by category as a JSON response.
 - **Example:** `http://localhost:3001/?category=food`
-- **Test** https://akshay-cq-ecommerce.glitch.me/?category=food
 
 ## Product Data
 
