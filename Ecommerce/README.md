@@ -6,14 +6,14 @@ This project is a simple commerce application that allows you to retrieve produc
 
 ## API Endpoints
 
-#### Get Products: [Try it here ↗️](https://akshay-cq-ecommerce.glitch.me/)
+#### Get Products:
 
 - **Endpoint:** `/`
 - **Method:** GET
 - **Description:** Retrieves a list of products as a JSON response.
 - **Example:** `http://localhost:3001/`
 
-#### Get Category Filtered Products: [Try it here ↗️](https://akshay-cq-ecommerce.glitch.me/?category=food)
+#### Get Category Filtered Products:
 
 - **Endpoint:** `/?category={yourcategory}`
 - **Method:** GET
