@@ -5,50 +5,49 @@ const fs = require('fs');
 const sendResponse = require('./src/modules/customResponse');
 
 
-const port = 3000;
-const server = http.createServer(async (req, res) => {
-    try {
-        const parsedUrl = url.parse(req.url, true);
-        let filtered = [];
+const PORT = process.env.PORT || 3000;
+const server = http.createServer((req, res) => {
+    const parsedUrl = url.parse(req.url, true);
         switch (parsedUrl.pathname) {
             case '/products':
-                filtered = await filterProducts({category: parsedUrl.query.category});
-                sendResponse(res, {
-                    type: 'json',
-                    data: filtered
+                filterProducts({ category: parsedUrl.query.category }, (error, result) => {
+                    sendResponse(res, {
+                        type: 'json',
+                        data: error ? `Something went wrong: ${error}` : result
+                    });
                 });
                 break;
             case '/filterproducts':
-                filtered = await filterProducts({category: parsedUrl.query.category, price: parsedUrl.query.price});
-                sendResponse(res, {
-                    type: 'json',
-                    data: filtered
+                filterProducts({ category: parsedUrl.query.category, price: parsedUrl.query.price }, (error, result) => {
+                    sendResponse(res, {
+                        type: 'json',
+                        data: error ? `Something went wrong: ${error}` : result
+                    });
                 });
                 break;
             default:
-                const index = fs.readFileSync(path.join(__dirname, './src/index.html'), 'utf-8');
-                sendResponse(res, {
-                    type: 'html',
-                    data: index
+                fs.readFile(path.join(__dirname, './src/index.html'), 'utf-8', (error, result) => {
+                    sendResponse(res, {
+                        type: 'html',
+                        data: error ? `Something went wrong: ${error}` : result
+                    });
                 });
         }
-    } catch (error) {
-        sendResponse(res, {
-            type: 'plain',
-            error: {
-                message: `Something went wrong - ${error}`
-            }
-        });
-    }
-})
+});
 
 
-const filterProducts = async (query) => {
-    const products = fs.readFileSync(path.join(__dirname, './src/data/products.json'));
-    const productsData = await JSON.parse(products);
-    let filtered = productsData.filter((product) => product.category == (query.category ? query.category : product.category) && product.price >= parseInt(query.price ? query.price : 0));
-    return filtered;
+// Filters the products on the basis of given category and price
+const filterProducts = (query, callback) => {
+    fs.readFile(path.join(__dirname, './src/data/products.json'), (error, result) => {
+        if (error) {
+            callback(error, null);
+            return;
+        }
+        const products = JSON.parse(result);
+        const filtered = products.filter((product) => product.category == (query.category ? query.category : product.category) && product.price >= parseInt(query.price ? query.price : 0));
+        callback(null, filtered);
+    });
 }
 
 
-server.listen(port, (error) => console.log(error ? 'Unable to start the server' : 'Server started...'));
+server.listen(PORT, (error) => console.log(error ? 'Unable to start the server' : 'Server started...'));
