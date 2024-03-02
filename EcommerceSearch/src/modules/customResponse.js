@@ -6,10 +6,17 @@ const contentType = {
 
 };
 
-const sendResponse = (res, response = { type: 'plain', error: null, data: null }) => {
-    res.writeHead(response.error ? response.error.code || 500 : 200, { 'Content-Type': contentType[response.type] });
-    res.write(response.error ? response.error.message : response.type === 'json' ? JSON.stringify(response.data || {}) : response.data || '');
-    res.end();
+/**
+ * Sends an HTTP response with the specified content type and the response message.
+ * @param {http.ServerResponse} res - The HTTP response object.
+ * @param {Object} response - The response object.
+ * @param {string} response.type - The content type of the response. Defaults to plain.
+ * @param {number} response.code - The HTTP status code. Defaults to 200.
+ * @param {string|Object|null} response.message - The data to be sent in the response. Defaults to null.
+ */
+const sendResponse = (res, response = { type: 'plain', code: 200, message: null }) => {
+    res.writeHead(response.code, { 'Content-Type': contentType[response.type] });
+    res.end(response.type === 'json' ? JSON.stringify(response.message || {}) : response.message || '')
 }
 
 module.exports = sendResponse;
