@@ -5,9 +5,9 @@ const contentType = {
     json: 'application/json'
 };
 
-const sendResponse = (res, response = {type: 'plain', code: 200, message: null}) => {
+const send = (res, response = {type: 'plain', code: 200, message: null}) => {
     res.writeHead(response.code, { 'Content-Type': contentType[response.type] });
     res.end(response.type === 'json' ? JSON.stringify(response.message || {}) : response.message || '');
 }
 
-module.exports = sendResponse;
+module.exports = { send };

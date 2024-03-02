@@ -4,36 +4,31 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
-    if (!req.query.hasOwnProperty('category')) {
-        res.status(200).sendFile(path.join(__dirname, './src/index.html'));
-        return;
+
+    if (!req.query.category) {
+        return res.status(200).sendFile(path.join(__dirname, '/src/', 'index.html'));
     }
 
-    fs.readFile(path.join(__dirname, './src/data/products.json'), 'utf-8', (error, result) => {
+    fs.readFile(path.join(__dirname, '/src/data/', 'products.json'), 'utf-8', (error, result) => {
         if (error) {
-            res.status(500).send(error);
-            return;
+            return res.status(500).send(`Internal Server Error - ${error}`);
         }
         const products = JSON.parse(result) || [];
-        switch (req.query.category.toLowerCase()) {
-            case 'food':
-                res.status(200).json(products.filter((product) => product.category === "food"));
-                break;
-            case 'others':
-                res.status(200).json(products.filter((product) => product.category === "others"));
-                break;
-            default:
-                res.status(204).send("No Products Found");
+        const filteredProducts = products.filter(product => product.category === req.query.category.toLocaleLowerCase());
+        if (filteredProducts.length === 0) {
+            return res.status(200).json({ success: false, message: `No products found for the category - ${req.query.category}` });
         }
+        return res.status(200).json(filteredProducts);
     });
 });
 
-app.get('/data/*', (req, res) => {
-    res.sendFile(path.join(__dirname, './src/', req.url));
+app.get('/data/:file', (req, res) => {
+    return res.sendFile(path.join(__dirname, '/src/data/', req.params.file));
 });
 
 app.listen(PORT, (error) => console.log(error ? 'Unable to start the server' : 'Server started...'));
