@@ -9,7 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
-
     if (!req.query.category) {
         return res.status(200).sendFile(path.join(__dirname, '/src/', 'index.html'));
     }
@@ -20,10 +19,11 @@ app.get("/", (req, res) => {
         }
         const products = JSON.parse(result) || [];
         const filteredProducts = products.filter(product => product.category === req.query.category.toLocaleLowerCase());
-        if (filteredProducts.length === 0) {
-            return res.status(200).json({ success: false, message: `No products found for the category - ${req.query.category}` });
-        }
-        return res.status(200).json(filteredProducts);
+        return res.status(200).json(
+            filteredProducts.length === 0
+            ? { success: false, message: `No products found for the category - ${req.query.category}` }
+            : filteredProducts
+        );
     });
 });
 

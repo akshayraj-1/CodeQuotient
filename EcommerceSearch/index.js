@@ -43,15 +43,15 @@ const server = http.createServer((req, res) => {
 
 
 // Filters the products on the basis of given category and price
-const filterProducts = (query, listener) => {
+const filterProducts = (query, callback) => {
     fs.readFile(path.join(__dirname, '/src/data/', 'products.json'), (error, result) => {
         if (error) {
-            listener(error, null);
+            callback(error, null);
             return;
         }
         const products = JSON.parse(result);
         const filteredProducts = products.filter((product) => product.category == (query.category ? query.category : product.category) && product.price >= parseInt(query.price ? query.price : 0));
-        listener(null, filteredProducts);
+        callback(null, filteredProducts);
     });
 }
 
