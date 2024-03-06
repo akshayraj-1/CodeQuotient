@@ -6,8 +6,17 @@ const contentType = {
 };
 
 const send = (res, response = {type: 'plain', code: 200, message: null}) => {
-    res.writeHead(response.code, { 'Content-Type': contentType[response.type] });
+    res.writeHead(response.code, { 
+        'Content-Type': contentType[response.type]
+    });
     res.end(response.type === 'json' ? JSON.stringify(response.message || {}) : response.message || '');
 }
 
-module.exports = { send };
+const redirect = (res, path) => {
+    res.writeHead(301, {
+        'Location': path
+    });
+    res.end();
+}
+
+module.exports = { send, redirect };
